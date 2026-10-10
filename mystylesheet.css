@@ -1,40 +1,47 @@
 body {
-color: rgb(198, 35, 35);
-background: white;
-font-family: Verdana,Arial,Helvetica,sans-serif;
-margin-left: 10%;
-margin-right: 10%;
+background: #f0f4f8;
+font-family: Arial, sans-serif;
+max-width: 800px;
+margin: 40px auto;
+padding: 0 20px;
+}
+header {
+text-align: center;
+margin-bottom: 30px;
 }
 h1 {
-color: #dc7acd;
-font-family: Georgia,"Times New Roman",Times,serif;
-font-size: 2em;
-text-transform: uppercase;
-margin-left: -8%;
+color: #d63384;
+font-size: 32px;
+margin: 0;
 }
-h2 {
-color: #dc7acd;
-font-family: Georgia,"Times New Roman",Times,serif;
-font-size: 1.7em;
-border: solid;
-margin-left: -4%;
-margin-top: 2em;
-margin-bottom: 2em;
+header p {
+color: #666;
+font-size: 16px;
 }
-p {
-font-size: 1.2em;
-text-indent: 2em;
+.card {
+background: white;
+border-radius: 12px;
+padding: 24px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
-blockquote {
-font-size: 1em;
-font-style: italic;
-color: black;
-background: red;
+.card-header h2 {
+color: #d63384;
+font-size: 22px;
+margin: 0 0 8px;
 }
-.first-line {
-font-weight: bold;
+.card-header span {
+color: #888;
+font-size: 14px;
 }
-#first {
-font-size: 1.4em;
-color: blue;
+.quote {
+font-size: 17px;
+line-height: 1.6;
+color: #333;
+margin-top: 16px;
+}
+footer {
+text-align: center;
+margin-top: 40px;
+color: #666;
+font-size: 14px;
 }
