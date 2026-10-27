@@ -1,44 +1,102 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Rita Zhang</title>
-  <link href="mystylesheet.css"rel="stylesheet"type="text/css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rita's Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            background-color: #d4f5e3;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #2a9d76;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #444;
+            margin-bottom: 2rem;
+        }
+        .accordion {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .accordion-header {
+            padding: 1rem 1.5rem;
+            background: #f0fcf7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: #2a9d76;
+        }
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            line-height: 1.6;
+            color: #333;
+        }
+        .accordion.active .accordion-content {
+            padding: 1rem 1.5rem 1.5rem;
+            max-height: 2000px;
+        }
+        .accordion-content img {
+            max-width: 100%;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        h3 {
+            color: #d6336c;
+            margin: 1.2rem 0 0.5rem;
+        }
+    </style>
 </head>
-
 <body>
-    <header>
-        <h1>Rita's Blog</h1>
-        <p>Web Development Learning Journal</p >
-    </header>
-    <main>
-        <div class="card">
-  <div class="card-header">
-    <h2>Week 1 Reflection</h2>
-    <span>Author: Rita</span>
-  </div>
-  <p class="quote">
-During Week 1, I learned the basics of creating a personal website using HTML and CSS. Before this workshop, I mainly understood websites from the perspective of an ordinary user. I focused on the information they provided and how easy they were to navigate, rather than thinking about how they were built. Through this practical task, I began to understand how HTML structures the content of a webpage and how CSS controls its visual appearance, including colours, fonts, spacing and layout.<br><br>
-One of the main things I learned was that creating a website involves more than simply putting information online. The structure and design of a website influence how users access information and interact with its content. For example, clear headings, consistent navigation and an organised layout can make a website easier to use, while poor visual organisation can make information difficult to find. This also made me reflect on websites I use regularly and consider how their design could be improved to make them more accessible and attractive.<br><br>
-The process also changed my understanding of the Internet. Previously, I tended to think of the Internet as a space where information could be easily accessed and shared. However, building a website helped me recognise that online spaces are constructed through technical systems, coding languages and design decisions. What users see on a webpage is the result of choices about how information is organised and presented. These choices can influence what users notice and how they experience the website.<br><br>
-Overall, this workshop helped me develop a more practical understanding of the Internet and gave me an opportunity to experiment with HTML and CSS. Although creating a website required me to think carefully about its structure and appearance, I realised that the aim was not necessarily to produce a perfect design, but to understand the processes behind it. I would like to continue improving my website by making its layout clearer, its navigation more intuitive and its content easier to access. This experience has encouraged me to think more critically about the digital spaces I use every day.
-  </p>
-</div>
+    <h1>Rita's Blog</h1>
+    <div class="subtitle">Web Development Learning Journal</div>
 
-<div class="card">
-  <div class="card-header">
-    <h2>Week 2 Reflection</h2>
-    <span>Author: Rita</span>
-  </div>
-  <p class="quote">
-During Week 2, I explored web scraping as a method of collecting information from websites. The workshop introduced me to the practical process of extracting online data and helped me understand how information presented on webpages can be transformed into structured datasets for further analysis. By experimenting with website URLs, sitemaps and scraping settings, I gained a better understanding of how scraping tools identify and collect information from different webpages.<br><br>
-One of the main challenges I encountered was configuring the scraping process correctly and understanding the results. I found that selecting a website or entering a URL was not always enough to obtain the information I expected. I needed to consider how the website was structured and how the scraping tool identified the relevant content. At one point, the final results did not appear to match the data shown during the scraping process. This made me realise that it is important to check the output carefully rather than assume that the tool has collected the correct information. It also showed me that technical settings and the structure of a webpage can affect the quality of the resulting dataset.<br><br>
-This experience changed how I think about online information. Before the workshop, I mainly saw websites as places where information could be read and accessed by users. Through web scraping, I began to understand that the same information can also be collected, reorganised and analysed as data. However, the data produced through scraping do not necessarily represent everything available on a website. The results depend on what the tool can access, which pages are selected and how the information is extracted. Therefore, web scraping is not simply a neutral process of copying information; it involves technical decisions that influence what becomes visible in the final dataset.<br><br>
-I also began to consider the ethical and legal issues associated with web scraping. Just because information is publicly accessible does not automatically mean that it can be collected and reused without restrictions. It is important to consider website terms and conditions, copyright, privacy and the potential impact on the people whose information is being collected. These concerns are particularly relevant when scraping personal or sensitive information.<br><br>
-Overall, this workshop helped me develop practical skills in web scraping while encouraging me to think more critically about the collection of online data. I learned that successful scraping requires not only technical knowledge but also careful checking, attention to data quality and awareness of ethical responsibilities. In the future, I would like to become more confident in configuring scraping tools, identifying the causes of unexpected results and evaluating whether the data collected are appropriate for my research purposes.
-  </p>
-</div>
-    </main>
-    <footer>Copyright 2026Rita. All rights reserved.</footer>
+    <div class="accordion">
+        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            About Me
+            <span>+</span>
+        </div>
+        <div class="accordion-content">
+            <p>Hi, I'm Rita, a digital media student documenting my web learning journey across creating websites and web scraping.</p >
+        </div>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            Weekly Reflections
+            <span>+</span>
+        </div>
+        <div class="accordion-content">
+            <h3>Week 1</h3>
+            <p>First week of the course, no hands-on workshop, just got to feel the vibe of digital media learning and get familiar with the module outline.</p >
+
+            <h3>Week 2: Creating Websites</h3>
+            <p>First time touching HTML and CSS code, learned how to build basic web structures, style pages with colours and layouts, and put together this伸缩式薄荷绿 blog as my first portfolio page.</p >
+
+            <h3>Week 3: Web Scraping Experience</h3>
+            <p>Used Web Scraper to pull programme titles from BBC's New & Trending section into a CSV, saw how media platform content can be collected as structured data, and noticed BBC's featured content leans heavy on crime and documentary series.</p >
+            < img src="bbc_scrape.png" alt="BBC Web Scraping Screenshot">
+        </div>
+    </div>
 </body>
 </html>
