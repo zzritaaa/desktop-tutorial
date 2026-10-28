@@ -13,28 +13,26 @@
         }
         body {
             background-color: #f0fff4;
-            background-image:
-                radial-gradient(#a8e6cf 9%, transparent 10%),
-                radial-gradient(#a8e6cf 9%, transparent 10%);
+            background-image: radial-gradient(#a8e6cf 9%, transparent 10%),
+                              radial-gradient(#a8e6cf 9%, transparent 10%);
             background-size: 50px 50px;
             background-position: 0 0, 25px 25px;
             padding: 40px 20px;
         }
         .container {
-            max-width: 760px;
+            max-width: 680px;
             margin: 0 auto;
         }
         h1 {
             text-align: center;
             color: #1b4332;
             font-size: 34px;
-            line-height: 1.3;
             margin-bottom: 32px;
         }
         .card {
             background: white;
             border-radius: 16px;
-            box-shadow: 0 5px 16px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 16px rgba(0,0,0,0.05);
             margin-bottom: 20px;
             overflow: hidden;
         }
@@ -44,33 +42,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 12px;
             font-weight: 600;
             color: #1b4332;
             background: #e8f5e9;
             font-size: 18px;
         }
-        .card-header span {
-            font-size: 24px;
-            font-weight: 400;
-            transition: transform 0.25s ease;
-        }
-        .card.active .card-header span {
-            transform: rotate(45deg);
-        }
         .card-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s ease;
+            transition: max-height 0.35s ease;
             padding: 0 24px;
         }
         .card.active .card-content {
-            max-height: 10000px;
+            max-height: 2500px;
             padding: 24px;
-        }
-        .card-content p {
-            color: #333;
-            line-height: 1.75;
         }
         .week-item {
             margin-bottom: 24px;
@@ -87,396 +72,63 @@
             margin-bottom: 10px;
             font-size: 17px;
         }
-        /* Week 3 image */
-        .single-image {
-            display: block;
-            width: 100%;
-            max-width: 560px;
-            height: auto;
-            margin: 16px auto 0;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
-        }
-        /* Week 4 introduction */
-        .week4-intro {
-            margin-bottom: 22px;
-        }
-        .project-label {
-            display: inline-block;
-            background: #e8f5e9;
-            color: #2d6a4f;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            padding: 7px 12px;
-            border-radius: 20px;
-            margin-bottom: 14px;
-        }
-        .evidence-heading {
-            color: #1b4332;
-            font-size: 20px;
-            margin: 26px 0 8px;
-        }
-        .evidence-subtitle {
-            color: #66756b;
-            font-size: 14px;
+        .week-item p {
+            color: #333;
             line-height: 1.6;
-            margin-bottom: 18px;
         }
-        /* Responsive screenshot gallery */
-        .evidence-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
-        }
-        .evidence-card {
-            min-width: 0;
-            background: #fbfefc;
-            border: 1px solid #e1eee5;
-            border-radius: 12px;
-            padding: 10px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .evidence-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 18px rgba(27, 67, 50, 0.09);
-        }
-        .image-button {
-            display: block;
-            width: 100%;
-            border: none;
-            padding: 0;
-            background: #edf5ef;
-            border-radius: 8px;
-            cursor: zoom-in;
-            overflow: hidden;
-        }
-        .evidence-card img {
-            display: block;
-            width: 100%;
-            height: 180px;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: none;
-            margin: 0;
-        }
-        .evidence-card h5 {
-            color: #1b4332;
-            font-size: 15px;
-            line-height: 1.4;
-            margin: 12px 2px 5px;
-        }
-        .evidence-card p {
-            color: #68756d;
-            font-size: 13px;
-            line-height: 1.55;
-            margin: 0 2px 4px;
-        }
-        .image-hint {
-            color: #527b62;
-            font-size: 12px;
-            margin-top: 14px;
-            text-align: center;
-        }
-        /* Image lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(15, 30, 21, 0.88);
-            padding: 24px;
-            align-items: center;
-            justify-content: center;
-        }
-        .lightbox.open {
-            display: flex;
-        }
-        .lightbox-inner {
-            position: relative;
-            max-width: 1100px;
-            width: 100%;
-            text-align: center;
-        }
-        .lightbox img {
-            display: block;
+        img {
             max-width: 100%;
-            max-height: 82vh;
-            width: auto;
-            height: auto;
-            margin: 0 auto;
-            object-fit: contain;
-            border-radius: 8px;
-            background: white;
-        }
-        .lightbox-caption {
-            color: white;
-            font-size: 14px;
+            border-radius: 10px;
             margin-top: 12px;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: -42px;
-            right: 0;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            background: transparent;
-            color: white;
-            border-radius: 50%;
-            width: 34px;
-            height: 34px;
-            font-size: 22px;
-            line-height: 1;
-            cursor: pointer;
-        }
-        @media (max-width: 520px) {
-            body {
-                padding: 24px 12px;
-            }
-            h1 {
-                font-size: 27px;
-                margin-bottom: 24px;
-            }
-            .card-header {
-                padding: 16px;
-                font-size: 16px;
-            }
-            .card.active .card-content {
-                padding: 18px 16px;
-            }
-            .evidence-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-            .evidence-card img {
-                height: 200px;
-            }
-            .lightbox {
-                padding: 12px;
-            }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                transition: none !important;
-            }
+            box-shadow: 0 3px 10px rgba(0,0,0,0.07);
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Rita's Digital Media Reflection</h1>
+
         <div class="card">
-            <div class="card-header"
-                 role="button"
-                 tabindex="0"
-                 aria-expanded="false"
-                 onclick="toggleCard(this)"
-                 onkeydown="handleCardKey(event, this)">
+            <div class="card-header" onclick="this.parentElement.classList.toggle('active')">
                 About Me
-                <span aria-hidden="true">+</span>
+                <span>+</span>
             </div>
             <div class="card-content">
-                <p>
-                    I'm a digital media student exploring web production and
-                    data scraping practices, documenting every learning step
-                    from writing first HTML to analysing real web content datasets.
-                </p>
+                <p>I'm a digital media student exploring web production and data scraping practices, documenting every learning step from writing first HTML to analyzing real web content datasets.</p>
             </div>
         </div>
+
         <div class="card">
-            <div class="card-header"
-                 role="button"
-                 tabindex="0"
-                 aria-expanded="false"
-                 onclick="toggleCard(this)"
-                 onkeydown="handleCardKey(event, this)">
+            <div class="card-header" onclick="this.parentElement.classList.toggle('active')">
                 Weekly Reflection
-                <span aria-hidden="true">+</span>
+                <span>+</span>
             </div>
             <div class="card-content">
                 <div class="week-item">
                     <h4>Week 1</h4>
-                    <p>
-                        Orientation week, got familiar with the course framework
-                        and learning objectives, sorted out the key nodes of web
-                        building and data practice in the semester, and laid a
-                        clear direction for subsequent hands-on learning.
-                    </p>
+                    <p>Orientation week, got familiar with the course framework and learning objectives, sorted out the key nodes of web building and data practice in the semester, and laid a clear direction for subsequent hands-on learning.</p>
                 </div>
                 <div class="week-item">
                     <h4>Week 2: Creating Websites</h4>
-                    <p>
-                        Learned basic HTML structure and CSS styling rules,
-                        tried to write static page code independently, mastered
-                        colour matching and basic layout logic, and completed
-                        the first version of the personal learning page.
-                    </p>
+                    <p>Learned basic HTML structure and CSS styling rules, tried to write static page code independently, mastered color matching and basic layout logic, and completed the first version of the personal learning page.</p>
                 </div>
                 <div class="week-item">
                     <h4>Week 3: Web Scraping Practice</h4>
-                    <p>
-                        Used the Web Scraper tool to collect the programme list
-                        data of BBC New & Trending, exported it into CSV format,
-                        learned how to convert unstructured web content into
-                        structured datasets, and observed that the platform's
-                        content focus is more on crime and documentary series.
-                    </p>
-                    <img class="single-image"
-                         src="bbc_scrape.png"
-                         alt="Screenshot of the BBC web scraping process">
+                    <p>Used the Web Scraper tool to collect the programme list data of BBC New & Trending, exported it into CSV format, learned how to convert unstructured web content into structured datasets, and observed that the platform's content focus is more on crime and documentary series.</p>
+                    <img src="bbc_scrape.png" alt="Web Scraping Screenshot">
                 </div>
                 <div class="week-item">
-                    <h4>Week 4: Data &amp; Visualisation</h4>
-                    <div class="week4-intro">
-                        <span class="project-label">Data project · Week 4</span>
-                        <p>
-                            This week’s workshop on data practices and visualisation
-                            pushed me to move beyond surface-level ideas of good
-                            data by building my own small dataset on how arts and
-                            humanities students encounter AI tools during academic
-                            reading. I chose the student AI reading challenge
-                            scenario, collected 30 public Reddit posts from
-                            education and AI-related communities, and coded them
-                            into four categories: fabricated citations, shallow
-                            analysis, length limits, and no reported difficulties.
-                            Going through the coding and value-labelling process
-                            taught me that turning messy qualitative posts into
-                            numerical spreadsheet values is never neutral. My
-                            choice of keywords, sampling high-engagement threads,
-                            and anonymisation rules all shaped what the dataset
-                            could see and what it erased. It also made me confront
-                            the gap between the objective numbers in my coded table
-                            and the lived frustrations in the original posts, like
-                            students encountering fake citations or hitting context
-                            limits when using AI for long readings. This exercise
-                            didn’t produce a perfect dataset, but it let me see
-                            firsthand how data is constructed, and how ethical
-                            choices in collection and coding shape what we can
-                            later visualise and claim about AI in student learning.
-                        </p>
-                    </div>
-                    <h5 class="evidence-heading">Evidence of My Data Workflow</h5>
-                    <p class="evidence-subtitle">
-                        From collecting raw posts to coding the data and reviewing
-                        the category distribution. Select an image to enlarge it.
-                    </p>
-                    <div class="evidence-grid">
-                        <div class="evidence-card">
-                            <button class="image-button"
-                                    type="button"
-                                    data-image="scrape csv.png"
-                                    data-caption="01 · Raw Reddit data"
-                                    aria-label="Enlarge raw Reddit data screenshot">
-                                <img src="scrape csv.png"
-                                     alt="Raw CSV data collected from Reddit"
-                                     loading="lazy">
-                            </button>
-                            <h5>01 · Data Collection</h5>
-                            <p>
-                                The collected data and original source information
-                                used to build the dataset.
-                            </p>
-                        </div>
-                        <div class="evidence-card">
-                            <button class="image-button"
-                                    type="button"
-                                    data-image="scrape xlsx1.png"
-                                    data-caption="02 · Coding table"
-                                    aria-label="Enlarge coded analysis table">
-                                <img src="scrape xlsx1.png"
-                                     alt="First coded analysis table"
-                                     loading="lazy">
-                            </button>
-                            <h5>02 · Coding the Data</h5>
-                            <p>
-                                Applying consistent category labels and numerical
-                                values to the collected posts.
-                            </p>
-                        </div>
-                        <div class="evidence-card">
-                            <button class="image-button"
-                                    type="button"
-                                    data-image="scrape xlsx2.png"
-                                    data-caption="03 · Category distribution"
-                                    aria-label="Enlarge category distribution table">
-                                <img src="scrape xlsx2.png"
-                                     alt="Second coded analysis table and category distribution"
-                                     loading="lazy">
-                            </button>
-                            <h5>03 · Initial Analysis</h5>
-                            <p>
-                                Summarising the frequency and percentage of each
-                                coded challenge category.
-                            </p>
-                        </div>
-                    </div>
-                    <p class="image-hint">
-                        Click any screenshot to view it at a larger size.
-                    </p>
+                    <h4>Week 4: Data & Visualisation</h4>
+                    <p>In Week 4, I organised collected Reddit posts into a coded spreadsheet, tagging AI reading issues like fake citations, shallow analysis and length limits with numerical values. The process showed me how keyword choices and selecting high-engagement posts shape the dataset, and made me see the real student pain points behind the neat coded table.</p>
+                    <img src="scrape_csv.png" alt="Raw CSV scraped data" style="max-width:65%; margin:12px auto; border-radius:6px; display:block;">
+                    <p> style="font-size:0.9em; color:#666; text-align:center; margin:5px 0 15px 0;">Raw scraped post data in CSV format</p>
+                    <img src="scrape_xlsx1.png" alt="Coded category spreadsheet" style="max-width:65%; margin:12px auto; border-radius:6px; display:block;">
+                    <p> style="font-size:0.9em; color:#666; text-align:center; margin:5px 0 15px 0;">Coded category spreadsheet part 1</p>
+                    <img src="scrape_xlsx2.png" alt="Coded category spreadsheet" style="max-width:65%; margin:12px auto; border-radius:6px; display:block;">
+                    <p> style="font-size:0.9em; color:#666; text-align:center; margin:5px 0 15px 0;">Coded category spreadsheet part 2</p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Image viewer -->
-    <div class="lightbox"
-         id="imageLightbox"
-         role="dialog"
-         aria-modal="true"
-         aria-label="Enlarged screenshot viewer"
-         onclick="closeLightbox(event)">
-        <div class="lightbox-inner">
-            <button class="lightbox-close"
-                    type="button"
-                    aria-label="Close enlarged image"
-                    onclick="closeLightbox(event, true)">×</button>
-            <img id="lightboxImage" src="" alt="">
-            <p class="lightbox-caption" id="lightboxCaption"></p>
-        </div>
-    </div>
-    <script>
-        function toggleCard(header) {
-            const card = header.parentElement;
-            const isActive = card.classList.toggle('active');
-            header.setAttribute('aria-expanded', String(isActive));
-        }
-        function handleCardKey(event, header) {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                toggleCard(header);
-            }
-        }
-        const lightbox = document.getElementById('imageLightbox');
-        const lightboxImage = document.getElementById('lightboxImage');
-        const lightboxCaption = document.getElementById('lightboxCaption');
-        document.querySelectorAll('.image-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const imagePath = button.dataset.image;
-                const thumbnail = button.querySelector('img');
-                lightboxImage.src = imagePath;
-                lightboxImage.alt = thumbnail.alt;
-                lightboxCaption.textContent = button.dataset.caption;
-                lightbox.classList.add('open');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-        function closeLightbox(event, forceClose = false) {
-            if (
-                forceClose ||
-                event.target === lightbox ||
-                event.target.classList.contains('lightbox')
-            ) {
-                lightbox.classList.remove('open');
-                lightboxImage.src = '';
-                document.body.style.overflow = '';
-            }
-        }
-        document.addEventListener('keydown', event => {
-            if (event.key === 'Escape' && lightbox.classList.contains('open')) {
-                lightbox.classList.remove('open');
-                lightboxImage.src = '';
-                document.body.style.overflow = '';
-            }
-        });
-    </script>
 </body>
 </html>
