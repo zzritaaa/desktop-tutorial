@@ -11,32 +11,40 @@
             box-sizing: border-box;
             font-family: system-ui, sans-serif;
         }
+
         body {
             background-color: #f0fff4;
-            background-image: radial-gradient(#a8e6cf 9%, transparent 10%),
-                              radial-gradient(#a8e6cf 9%, transparent 10%);
+            background-image:
+                radial-gradient(#a8e6cf 9%, transparent 10%),
+                radial-gradient(#a8e6cf 9%, transparent 10%);
             background-size: 50px 50px;
             background-position: 0 0, 25px 25px;
             padding: 40px 20px;
         }
+
         .container {
-            max-width: 680px;
+            max-width: 760px;
             margin: 0 auto;
         }
+
         h1 {
             text-align: center;
             color: #1b4332;
             font-size: 34px;
             margin-bottom: 32px;
         }
+
         .card {
-            background: white;
+            background: #fff;
             border-radius: 16px;
-            box-shadow: 0 5px 16px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 16px rgba(0, 0, 0, 0.05);
             margin-bottom: 20px;
             overflow: hidden;
         }
+
         .card-header {
+            width: 100%;
+            border: 0;
             padding: 18px 24px;
             cursor: pointer;
             display: flex;
@@ -46,116 +54,255 @@
             color: #1b4332;
             background: #e8f5e9;
             font-size: 18px;
+            text-align: left;
         }
+
+        .card-header:hover,
+        .week-header:hover {
+            background: #dcefe1;
+        }
+
+        .toggle-icon {
+            font-size: 22px;
+            line-height: 1;
+            transition: transform 0.25s ease;
+        }
+
+        .card.active > .card-header .toggle-icon,
+        .week-item.active > .week-header .toggle-icon {
+            transform: rotate(45deg);
+        }
+
         .card-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease;
-            padding: 0 24px;
-        }
-        .card.active .card-content {
-            max-height: 2500px;
+            display: none;
             padding: 24px;
         }
-        .week-item {
-            margin-bottom: 24px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid #e8f5e9;
+
+        .card.active > .card-content {
+            display: block;
         }
-        .week-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        .week-item h4 {
-            color: #2d6a4f;
-            margin-bottom: 10px;
-            font-size: 17px;
-        }
-        .week-item p {
+
+        .about-text,
+        .week-content p {
             color: #333;
-            line-height: 1.6;
-        }
-        img {
-            max-width: 100%;
-            border-radius: 10px;
-            margin-top: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.07);
-        }
-        .week-item p {
-            margin-bottom: 15px;
             line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .week-item {
+            margin-bottom: 12px;
+            border: 1px solid #e1eee5;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .week-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .week-header {
+            width: 100%;
+            border: 0;
+            padding: 15px 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            background: #f4faf5;
+            color: #2d6a4f;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .week-content {
+            display: none;
+            padding: 18px;
+            border-top: 1px solid #e8f5e9;
+        }
+
+        .week-item.active > .week-content {
+            display: block;
+        }
+
+        .week-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 12px auto 18px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+        }
+
+        .week-content img.medium-image {
+            max-width: 65%;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 24px 14px;
+            }
+
+            h1 {
+                font-size: 27px;
+                margin-bottom: 24px;
+            }
+
+            .card-content {
+                padding: 16px;
+            }
+
+            .week-header {
+                padding: 14px;
+            }
+
+            .week-content {
+                padding: 14px;
+            }
+
+            .week-content img.medium-image {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <main class="container">
         <h1>Rita's Digital Media Reflection</h1>
 
-        <div class="card">
-            <div class="card-header" onclick="this.parentElement.classList.toggle('active')">
-                About Me
-                <span>+</span>
+        <section class="card">
+            <button class="card-header" type="button" aria-expanded="false">
+                <span>About Me</span>
+                <span class="toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="card-content" hidden>
+                <p class="about-text">I'm a digital media student exploring web production and data scraping practices, documenting every learning step from writing first HTML to analyzing real web content datasets.</p>
             </div>
-            <div class="card-content">
-                <p>I'm a digital media student exploring web production and data scraping practices, documenting every learning step from writing first HTML to analyzing real web content datasets.</p>
+        </section>
+
+        <section class="card">
+            <button class="card-header" type="button" aria-expanded="false">
+                <span>Weekly Reflection</span>
+                <span class="toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="card-content" hidden>
+
+                <section class="week-item">
+                    <button class="week-header" type="button" aria-expanded="false">
+                        <span>Week 1: Nice to meet you</span>
+                        <span class="toggle-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="week-content" hidden>
+                        <p>Before starting this course, I mainly thought of digital media as a set of tools that people use to communicate, access information and present visual content. In China, I was more accustomed to using mobile apps than websites. However, after coming to the UK, I found myself relying on websites much more frequently, particularly the University of Leeds Minerva platform. I use it to check course information, download lecture slides and access online reading materials through external links. This made me realise that websites have become an important part of my everyday learning.</p>
+
+                        <p>One of the first things I found interesting about this course was the idea of creating my own portfolio website. I initially imagined it as a personal space that I could decorate and arrange according to my preferences, almost like designing a room with furniture and objects that reflect my personality.</p>
+
+                        <p>The first week’s lectures also encouraged me to reconsider my understanding of technology. Baym (2015) discusses different ways of understanding the relationship between technology and society, including technological determinism and the social construction of technology. I began to understand that digital technologies are not simply neutral tools that exist independently of people. Their development and use are also shaped by social contexts, values and human decisions.</p>
+
+                        <p>This made me think more critically about my own experience of using digital media in China and the UK. Why was I more accustomed to using mobile apps in China, while I now rely on websites much more frequently in the UK? I began to wonder whether differences in digital policies, platform development and broader social environments might help explain these different habits. Rather than seeing these differences as simply a matter of personal preference, I started to consider how the relationship between technology and society can shape people’s everyday media practices.</p>
+                    </div>
+                </section>
+
+                <section class="week-item">
+                    <button class="week-header" type="button" aria-expanded="false">
+                        <span>Week 2: Creating Websites</span>
+                        <span class="toggle-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="week-content" hidden>
+                        <p>This week, I began building my personal portfolio website using HTML and CSS. As someone with no previous experience of writing code, I initially found the process quite challenging. I quickly realised that even a small mistake, such as a missing punctuation mark or a spelling error, could affect how the webpage appeared. This made coding feel quite demanding, especially when I was still trying to understand how the different elements worked together.</p>
+
+                        <p>One of the most time-consuming parts was deciding on the visual style. I wanted the website to feel personal and reflect my own aesthetic preferences, rather than simply looking like a standard template. I spent time looking at different website examples and thinking about colour combinations, layouts and how the different sections should be arranged. Finding a style that I genuinely liked was harder than I had expected.</p>
+
+                        <p>However, the process also gave me a strong sense of achievement. Once I started understanding HTML and CSS, I realised that I could actually control and change different aspects of a webpage myself. I was no longer just looking at a finished website as a user; I was beginning to understand how its visual structure was created.</p>
+
+                        <p>Although my website may not yet have the sophisticated interactions or highly distinctive design of some other portfolios, I am happy with its current appearance and overall completeness. For me, completing this first version was an important step.</p>
+                    </div>
+                </section>
+
+                <section class="week-item">
+                    <button class="week-header" type="button" aria-expanded="false">
+                        <span>Week 3: Web Scraping Practice</span>
+                        <span class="toggle-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="week-content" hidden>
+                        <p>This week, I used the Web Scraper tool to collect information from the BBC News &amp; Trending programme listings. The website was suggested during the workshop, and I found the content interesting because it was related to television and documentaries, which are also connected to my everyday media interests. I organised the collected information and exported it into a CSV file.</p>
+
+                        <p>During the scraping process, I encountered some difficulties with the website structure. In particular, I struggled with a selector involving an underscore, which meant that the scraping process did not work as expected. At the time, I found it confusing because I could see the information on the webpage but could not immediately understand why the tool was unable to collect it correctly. This experience showed me that web scraping requires more than simply selecting the information I want. I also need to understand how the webpage is structured.</p>
+
+                        <p>Another interesting observation came from comparing the BBC recommendations displayed on my homepage with those shown to a friend. I noticed that the content did not seem to be exactly the same. My own homepage appeared to show more documentaries, which made me wonder whether users receive different recommendations based on their previous activity or other factors. I cannot determine the exact reason from this observation alone, but it made me more curious about how online content is selected and presented.</p>
+
+                        <img src="bbc_scrape.png" alt="Screenshot of the BBC web scraping results">
+                    </div>
+                </section>
+
+                <section class="week-item">
+                    <button class="week-header" type="button" aria-expanded="false">
+                        <span>Week 4: Data Collection and Classification</span>
+                        <span class="toggle-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="week-content" hidden>
+                        <p>This week, I collected 30 Reddit posts as part of a wider group research activity about the difficulties students experience when using AI tools for academic reading. My assigned variable focused specifically on the problems students encountered when using AI for reading. I organised these problems into four categories: fabricated references, superficial analysis or summaries, word limits, and users who reported experiencing no difficulties. I then coded the 30 posts and organised the results in a spreadsheet.</p>
+
+                        <img class="medium-image" src="scrape_csv.png" alt="Raw CSV scraped data">
+                        <img class="medium-image" src="scrape_xlsx1.png" alt="Coded category spreadsheet">
+                        <img class="medium-image" src="scrape_xlsx2.png" alt="Coded category spreadsheet">
+
+                        <p>One issue I found interesting was the relatively even distribution across the four categories. Fabricated references accounted for 26.7%, superficial analysis for 20%, word limits for 26.7%, and no difficulties also accounted for 26.7%. I initially wondered whether this meant that my data collection had not identified a particularly dominant problem. I also started questioning whether researchers should collect data without any particular expectations, or whether having a specific focus inevitably influences what they find.</p>
+
+                        <p>This made me think more carefully about the relationship between data collection and research design. If I collected posts with a particular issue already in mind, would that issue become more prominent in the final results? On the other hand, if I tried to collect posts without any particular preference, would the results simply remain relatively evenly distributed? I also wondered whether introducing time as another variable might reveal different patterns. For example, would the problems students discuss when using AI for reading be different if I focused only on posts from the most recent month? This made me realise that decisions about the scope and timing of data collection can influence the patterns that researchers eventually identify.</p>
+                    </div>
+                </section>
+
+                <section class="week-item">
+                    <button class="week-header" type="button" aria-expanded="false">
+                        <span>Week 5: Data Visualisation</span>
+                        <span class="toggle-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="week-content" hidden>
+                        <p>This week, I continued working with the Reddit data collected and classified in Week 4. I used the results to create a pie chart showing the proportions of the four categories. The chart made the overall distribution easier to understand at a glance. However, I also noticed a limitation of visualisation. Once the information was converted into a pie chart, I could no longer see the more detailed information contained in the original posts, such as their dates and the specific experiences described by individual users. The chart made the results easier to compare, but it also removed some of the context behind the numbers.</p>
+
+                        <p>This made me think more critically about the relationship between data and objectivity. A chart can look objective because it presents numerical information in a clear and organised way. However, the results depend on decisions made before the chart is created: which posts to collect, which categories to use, and how to organise the information. In this sense, visualisation does not simply present reality; it also reflects the choices made during data collection and classification.</p>
+
+                        <p>D’Ignazio and Klein (2020) argue that the ways data are counted and classified matter because they influence what becomes visible and how it is interpreted. This helped me understand that a visualisation should not be treated as a complete representation of the original data. Although the pie chart was useful for identifying broad patterns, returning to the original posts would still be necessary to understand the experiences behind them.</p>
+                    </div>
+                </section>
+
             </div>
-        </div>
+        </section>
+    </main>
 
-        <div class="card">
-            <div class="card-header" onclick="this.parentElement.classList.toggle('active')">
-                Weekly Reflection
-                <span>+</span>
-            </div>
-            <div class="card-content">
-                <div class="week-item">
-                    <h4>Week 1</h4>
-                    <p>Before starting this course, I mainly thought of digital media as a set of tools that people use to communicate, access information and present visual content. In China, I was more accustomed to using mobile apps than websites. However, after coming to the UK, I found myself relying on websites much more frequently, particularly the University of Leeds Minerva platform. I use it to check course information, download lecture slides and access online reading materials through external links. This made me realise that websites have become an important part of my everyday learning.</p>
-                    
-                    <p>One of the first things I found interesting about this course was the idea of creating my own portfolio website. I initially imagined it as a personal space that I could decorate and arrange according to my preferences, almost like designing a room with furniture and objects that reflect my personality.</p>
+    <script>
+        // Main cards: About Me and Weekly Reflection
+        document.querySelectorAll('.card-header').forEach((button) => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.card');
+                const content = card.querySelector(':scope > .card-content');
+                const isOpening = !card.classList.contains('active');
 
-                    <p>The first week’s lectures also encouraged me to reconsider my understanding of technology. Baym (2015) discusses different ways of understanding the relationship between technology and society, including technological determinism and the social construction of technology. I began to understand that digital technologies are not simply neutral tools that exist independently of people. Their development and use are also shaped by social contexts, values and human decisions.</p>
+                card.classList.toggle('active', isOpening);
+                button.setAttribute('aria-expanded', String(isOpening));
+                content.hidden = !isOpening;
+            });
+        });
 
-                    <p>This made me think more critically about my own experience of using digital media in China and the UK. Why was I more accustomed to using mobile apps in China, while I now rely on websites much more frequently in the UK? I began to wonder whether differences in digital policies, platform development and broader social environments might help explain these different habits. Rather than seeing these differences as simply a matter of personal preference, I started to consider how the relationship between technology and society can shape people’s everyday media practices.</p>
-                <div class="week-item">
-                    <h4>Week 2: Creating Websites</h4>
-                    <p>This week, I began building my personal portfolio website using HTML and CSS. As someone with no previous experience of writing code, I initially found the process quite challenging. I quickly realised that even a small mistake, such as a missing punctuation mark or a spelling error, could affect how the webpage appeared. This made coding feel quite demanding, especially when I was still trying to understand how the different elements worked together.</p>
+        // Nested weekly accordions: Week 1 to Week 5
+        document.querySelectorAll('.week-header').forEach((button) => {
+            button.addEventListener('click', () => {
+                const week = button.closest('.week-item');
+                const content = week.querySelector(':scope > .week-content');
+                const isOpening = !week.classList.contains('active');
 
-                    <p>One of the most time-consuming parts was deciding on the visual style. I wanted the website to feel personal and reflect my own aesthetic preferences, rather than simply looking like a standard template. I spent time looking at different website examples and thinking about colour combinations, layouts and how the different sections should be arranged. Finding a style that I genuinely liked was harder than I had expected.</p>
-
-                    <p>However, the process also gave me a strong sense of achievement. Once I started understanding HTML and CSS, I realised that I could actually control and change different aspects of a webpage myself. I was no longer just looking at a finished website as a user; I was beginning to understand how its visual structure was created.</p>
-
-                    <p>Although my website may not yet have the sophisticated interactions or highly distinctive design of some other portfolios, I am happy with its current appearance and overall completeness. For me, completing this first version was an important step.</p>
-                </div>
-                <div class="week-item">
-                    <h4>Week 3: Web Scraping Practice</h4>
-                    <p>This week, I used the Web Scraper tool to collect information from the BBC News & Trending programme listings. The website was suggested during the workshop, and I found the content interesting because it was related to television and documentaries, which are also connected to my everyday media interests. I organised the collected information and exported it into a CSV file.</p>
-
-                    <p>During the scraping process, I encountered some difficulties with the website structure. In particular, I struggled with a selector involving an underscore, which meant that the scraping process did not work as expected. At the time, I found it confusing because I could see the information on the webpage but could not immediately understand why the tool was unable to collect it correctly. This experience showed me that web scraping requires more than simply selecting the information I want. I also need to understand how the webpage is structured.</p>
-
-                    <p>Another interesting observation came from comparing the BBC recommendations displayed on my homepage with those shown to a friend. I noticed that the content did not seem to be exactly the same. My own homepage appeared to show more documentaries, which made me wonder whether users receive different recommendations based on their previous activity or other factors. I cannot determine the exact reason from this observation alone, but it made me more curious about how online content is selected and presented.</p>
-                    <img src="bbc_scrape.png" alt="Web Scraping Screenshot">
-                </div>
-                <div class="week-item">
-                    <h4>Week 4: Data Collection and Classification</h4>
-                    <p>This week, I collected 30 Reddit posts as part of a wider group research activity about the difficulties students experience when using AI tools for academic reading. My assigned variable focused specifically on the problems students encountered when using AI for reading. I organised these problems into four categories: fabricated references, superficial analysis or summaries, word limits, and users who reported experiencing no difficulties. I then coded the 30 posts and organised the results in a spreadsheet.</p>
-                    <img src="scrape_csv.png" alt="Raw CSV scraped data" style="max-width:65%; margin:12px auto; border-radius:6px; display:block;">
-                    <img src="scrape_xlsx1.png" alt="Coded category spreadsheet" style="max-width:65%; margin:12px auto; border-radius:6px; display:block;">
-                    <img src="scrape_xlsx2.png" alt="Coded category spreadsheet" style="max-width:65%; margin:12px auto; border-radius:6px; display:block;">
-
-                    <p>One issue I found interesting was the relatively even distribution across the four categories. Fabricated references accounted for 26.7%, superficial analysis for 20%, word limits for 26.7%, and no difficulties also accounted for 26.7%. I initially wondered whether this meant that my data collection had not identified a particularly dominant problem. I also started questioning whether researchers should collect data without any particular expectations, or whether having a specific focus inevitably influences what they find.</p>
-
-                    <p>This made me think more carefully about the relationship between data collection and research design. If I collected posts with a particular issue already in mind, would that issue become more prominent in the final results? On the other hand, if I tried to collect posts without any particular preference, would the results simply remain relatively evenly distributed?I also wondered whether introducing time as another variable might reveal different patterns. For example, would the problems students discuss when using AI for reading be different if I focused only on posts from the most recent month? This made me realise that decisions about the scope and timing of data collection can influence the patterns that researchers eventually identify.</p>
-                </div>
-                <div class="week-item">
-                    <h4>Week 5: Data Visualisation</h4>
-                    <p>This week, I continued working with the Reddit data collected and classified in Week 4. I used the results to create a pie chart showing the proportions of the four categories. The chart made the overall distribution easier to understand at a glance.However, I also noticed a limitation of visualisation. Once the information was converted into a pie chart, I could no longer see the more detailed information contained in the original posts, such as their dates and the specific experiences described by individual users. The chart made the results easier to compare, but it also removed some of the context behind the numbers.</p>
-                    
-                    <p>This made me think more critically about the relationship between data and objectivity. A chart can look objective because it presents numerical information in a clear and organised way. However, the results depend on decisions made before the chart is created: which posts to collect, which categories to use, and how to organise the information. In this sense, visualisation does not simply present reality; it also reflects the choices made during data collection and classification.</p>
-
-                    <p>D’Ignazio and Klein (2020) argue that the ways data are counted and classified matter because they influence what becomes visible and how it is interpreted. This helped me understand that a visualisation should not be treated as a complete representation of the original data. Although the pie chart was useful for identifying broad patterns, returning to the original posts would still be necessary to understand the experiences behind them.</p>
-            </div>
-        </div>
-    </div>
+                week.classList.toggle('active', isOpening);
+                button.setAttribute('aria-expanded', String(isOpening));
+                content.hidden = !isOpening;
+            });
+        });
+    </script>
 </body>
 </html>
